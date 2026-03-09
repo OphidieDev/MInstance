@@ -28,7 +28,7 @@
 ## Installation
 Add to your `wally.toml`:
 ```toml
-minstance = "ophidiedev/MInstance@0.1.0"
+minstance = "ophidiedev/minstance@0.1.0"
 ```
 
 Add to your `pesde.toml`:
