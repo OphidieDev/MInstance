@@ -1,0 +1,26 @@
+# Roblox Studio files
+/*.rbxlx
+/*.rbxmx
+/*.rbxm
+/*.rbxl
+
+# Wally
+Packages/
+ServerPackages/
+DevPackages/
+wally.lock
+
+# Pesde
+luau_packages
+lune_packages
+roblox_packages
+roblox_server_packages
+.pesde/scripts
+
+# Npm
+node_modules/
+
+# Selene generated file
+roblox.toml
+roblox.yml
+sourcemap.json
