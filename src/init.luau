@@ -4,11 +4,11 @@ local NULL = nil
 local EMPTY_TABLE = {}
 
 local AssetService = game:GetService("AssetService")
-local ReflectionServiceWrapper = require(script.DefaultProperties)
-local BufferEncoder = require(script.BufferEncoder)
-local OldCompress = require(script.OldCompress)
-local NewCompress = require(script.NewCompress)
-local Base94 = require(script.Encoders.Base94)
+local ReflectionServiceWrapper = require(script.Modules.DefaultProperties)
+local BufferEncoder = require(script.Modules.BufferEncoder)
+local OldCompress = require(script.Modules.OldCompress)
+local NewCompress = require(script.Modules.NewCompress)
+local Base94 = require(script.Modules.Encoders.Base94)
 local CreateInstanceMap, ReverseInstanceMap -- these function are declared this way because they will be calling themselves
 local InstanceReferenceCache = {}
 local CreatableInstancesCache = {}
