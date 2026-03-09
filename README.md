@@ -1,156 +1,45 @@
-# MInstance (Minifyinstance)
+<p align="center">
+  <h1 align="center">MInstance</h1>
+  <p align="center">
+    A very fast Instance serializer for Roblox that can serialize 40,000 Instances and compress it into a 100K+ character string in only 0.4s
+    <br />
+  </p>
+</p>
 
-MInstance is an open-source, high-performance, and lightweight Instance Serialization Module for Roblox Instances written in pure Luau. It has pretty much everything that you would need. Not only does it beat every other module in terms of serialization speed, but also in serialized data compression ratio. This has only been in development for 2 days, but already has all of the features you need, while not letting a single CPU cycle go to waste.
+<p align="center">
+	<a href="https://www.npmjs.com/package/@rbxts/MInstance"><img href="https://www.npmjs.com/package/@rbxts/MInstance" alt="NPM Version" src="https://img.shields.io/npm/v/%40rbxts%2FMInstance?logo=npm"></a>
+	<a href="https://pesde.daimond113.com/packages/ophidiedev/minstance"><img alt="pesde" src="https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2FOphidieDev%2Freplica%2Frefs%2Fheads%2Fmain%2Fpesde.toml&query=version&prefix=ophidiedev%2Fminstance%40&style=plastic&label=pesde&color=F19D1E&logo=data:image/svg%2bxml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00OS42MDI1IDBMOTIuOTAzOCAyNVY3NUw0OS42MDI1IDEwMEw2LjMwMTI3IDc1VjI1TDQ5LjYwMjUgMFpNMTQuMzAxMyAyOS42MTg4TDQ5LjYwMjUgOS4yMzc2TDg0LjkwMzggMjkuNjE4OFY3MC4zODEyTDQ5LjYwMjUgOTAuNzYyNEwzMy42MTQ4IDgxLjUzMTlWNjcuMzg0OEMzNC41MTY3IDY4LjUwNzEgMzUuNjM4OCA2OS40MjE1IDM2Ljk4MSA3MC4xMjc5QzM4Ljk3MDEgNzEuMTQ4IDQxLjAzNTcgNzEuNjU4IDQzLjE3NzkgNzEuNjU4QzQ2LjQ0MiA3MS42NTggNDkuMTQ1MiA3MC44OTI5IDUxLjI4NzMgNjkuMzYyOUM1My40ODA1IDY3Ljc4MTggNTUuMTEyNiA2NS43NjcyIDU2LjE4MzYgNjMuMzE5QzU3LjA5MTUgNjEuMzM4MiA1Ny42MzIgNTkuMjc0IDU3LjgwNTQgNTcuMTI2M0M1OS44NzIzIDU3Ljc0NTcgNjIuMjE1NyA1OC4wNTU0IDY0LjgzNTYgNTguMDU1NEM2Ny42OTE4IDU4LjA1NTQgNzAuMzY5NSA1Ny42NDczIDcyLjg2ODYgNTYuODMxM0M3NS4zNjc4IDU1Ljk2NDIgNzcuNDA3OSA1NC44MTY3IDc4Ljk4OSA1My4zODg2TDc1Ljc3NTggNDcuODAzOEM3NC41NTE3IDQ4LjkyNTggNzIuOTk2MSA0OS44NDM5IDcxLjEwOSA1MC41NTc5QzY5LjIyMTkgNTEuMjIxIDY3LjIwNzMgNTEuNTUyNSA2NS4wNjUyIDUxLjU1MjVDNjEuMzkyOSA1MS41NTI1IDU4LjY2NDMgNTAuNjg1NCA1Ni44NzkyIDQ4Ljk1MTNDNTYuNzE5NSA0OC43OTYyIDU2LjU2NyA0OC42MzY1IDU2LjQyMTcgNDguNDcyQzU1LjYxMDIgNDcuNTUzOSA1NS4wMjExIDQ2LjQ4OTYgNTQuNjU0NiA0NS4yNzkxTDU0LjY0NDMgNDUuMjQ1Mkw1NC42NjkgNDUuMjc5MUg3OS4yMTg1VjQxLjk4OTRDNzkuMjE4NSAzOS4wMzEzIDc4LjU1NTUgMzYuMzUzNiA3Ny4yMjk0IDMzLjk1NjVDNzUuOTU0MyAzMS41NTkzIDc0LjA5MjcgMjkuNjQ2NyA3MS42NDQ1IDI4LjIxODZDNjkuMjQ3NCAyNi43Mzk1IDY2LjM2NTcgMjYgNjIuOTk5NSAyNkM1OS42ODQzIDI2IDU2LjgwMjcgMjYuNzM5NSA1NC4zNTQ1IDI4LjIxODZDNTEuOTA2NCAyOS42NDY3IDUwLjAxOTMgMzEuNTU5MyA0OC42OTMyIDMzLjk1NjVDNDcuNjc0MyAzNS43OTgzIDQ3LjA0NjkgMzcuODA1NyA0Ni44MTA4IDM5Ljk3ODhDNDUuNjg4OCAzOS43MjggNDQuNDc3OCAzOS42MDI2IDQzLjE3NzkgMzkuNjAyNkM0MS4wMzU3IDM5LjYwMjYgMzguOTcwMSA0MC4xMTI3IDM2Ljk4MSA0MS4xMzI3QzM1LjMxNjIgNDEuOTY1MSAzMy45OTAyIDQzLjE1NDkgMzMuMDAyOCA0NC43MDIzVjQwLjM2NzdIMjAuNjg1NVY0Ni4yNTg1SDI1LjgxMTNWNzcuMDI2NkwxNC4zMDEzIDcwLjM4MTJWMjkuNjE4OFpNNTUuMTk2MSAzNi4wOTg2QzU0LjY1MjggMzcuMTAxNSA1NC4zMzIxIDM4LjEyMTYgNTQuMjM0IDM5LjE1ODhINzEuNzk3NkM3MS43OTc2IDM4LjAzNjcgNzEuNDQwNSAzNi45NDAxIDcwLjcyNjUgMzUuODY5MUM3MC4wNjM0IDM0Ljc0NyA2OS4wNjg5IDMzLjgwMzUgNjcuNzQyOCAzMy4wMzg0QzY2LjQ2NzcgMzIuMjczNCA2NC44ODY3IDMxLjg5MDggNjIuOTk5NSAzMS44OTA4QzYxLjExMjQgMzEuODkwOCA1OS41MDU4IDMyLjI5ODkgNTguMTc5OCAzMy4xMTQ5QzU2LjkwNDcgMzMuODggNTUuOTEwMSAzNC44NzQ1IDU1LjE5NjEgMzYuMDk4NlpNNDkuNjQ1MSA1MS41NjkyQzQ5LjMwNzYgNTAuNjY0MSA0OC44MzgxIDQ5Ljg3MSA0OC4yMzY3IDQ5LjE4OThDNDguMDg4NSA0OS4wMjE5IDQ3LjkzMjMgNDguODYwOSA0Ny43NjgxIDQ4LjcwNjdDNDYuMDg1IDQ3LjA3NDYgNDQuMDQ0OSA0Ni4yNTg1IDQxLjY0NzggNDYuMjU4NUM0MC4xMTc3IDQ2LjI1ODUgMzguNjEzMSA0Ni41NjQ1IDM3LjEzNCA0Ny4xNzY2QzM1Ljg1OTQgNDcuNjc3MyAzNC42ODYzIDQ4LjU0MzggMzMuNjE0OCA0OS43NzU5VjYxLjQ3QzM0LjY4NjMgNjIuNjY2NCAzNS44NTk0IDYzLjUzNzggMzcuMTM0IDY0LjA4NEMzOC42MTMxIDY0LjY5NjEgNDAuMTE3NyA2NS4wMDIxIDQxLjY0NzggNjUuMDAyMUM0NC4wNDQ5IDY1LjAwMjEgNDYuMDg1IDY0LjE4NjEgNDcuNzY4MSA2Mi41NTRDNDkuNDUxMiA2MC45MjE5IDUwLjI5MjggNTguNjAxMiA1MC4yOTI4IDU1LjU5MjFDNTAuMjkyOCA1NC4wNjc5IDUwLjA3NjkgNTIuNzI3IDQ5LjY0NTEgNTEuNTY5MloiIGZpbGw9IiNGRkZGRkYiPjwvcGF0aD4KPC9zdmc+" /></a>
+	<a href="https://wally.run/package/ophidiedev/MInstance"><img alt="wally" src="https://img.shields.io/badge/dynamic/toml?url=https%3A%2F%2Fraw.githubusercontent.com%2FOphidieDev%2FMInstance%2Frefs%2Fheads%2Fmain%2Fwally.toml&query=package.version&prefix=ophidiedev%2FMInstance%40&style=plastic&label=wally&color=AD4646&logo=data:image/svg%2bxml;base64,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" /></a>
+</p>
 
-Roblox DevForum: [https://devforum.roblox.com/t/new-update-an-ultra-optimized-instance-serializer-that-can-serialize-40000-instances-and-compress-it-into-a-100k-character-string-in-only-04s/3818154](https://devforum.roblox.com/t/new-update-an-ultra-optimized-instance-serializer-that-can-serialize-40000-instances-and-compress-it-into-a-100k-character-string-in-only-04s/3818154)
+> [!NOTE]
+> The original source code for the replica project can be found [here](https://github.com/kieldbg/MInstance)
 
------
+## Features
+- Supports majority of Roblox data types and can serialize most properties with no issues.
+- Extremely fast performance!
+- Supports properties with its value being set to reference to another Instance, achieving this without setting UUIDs. This allows properties such as `SelectionBox.Adornee` to perfectly work as long as it is referencing an Instance that is a descendant of the main Instance being deserialized.
+- Supports MeshParts, which some other serializers fail to serialize properly. This is optional and you have to manually enable it in `DeserializationSettings`. (LOADS SLOW due to requiring to fetch the assets from Roblox's APIs)
+- Serializes attributes.
+- Instead of relying on an API dump to get properties like all other serializers do, the module will be updated to use `ReflectionService:GetPropertiesOfClass()` the moment that it is enabled, which is more futureproof than relying on the API dump.
+- You have the option to encode serialized data into Base94, which allows you to store serialized data into `DataStore`.
 
-## Performance (v1.1)
 
-### Test \#1: [Crossroads-Classic-Map.rbxm](https://devforum.roblox.com/uploads/short-url/5IGRBlugw4mO45y3UYkvwoH8Xjo.rbxm) (32.0 KB) — 1,736 Instances
-
-| | MInstance | RBLXSerialize | SerializationService |
-| :--- | :--- | :--- | :--- |
-| **Serialization Time** | `0.0198 seconds` | `0.1836 seconds` | `0.0051 seconds` 😨 |
-| **Compression Time** | `0.0018 seconds` |  | |
-| **Serialized data character count** | `127,105` (uncompressed) | `58,779` | `32,791` |
-| **Compressed data character count** | `31,914` | `58,779` | |
-
-### Test \#2: [Havoc-Map.rbxm](https://devforum.roblox.com/uploads/short-url/weN8KgfBGaUUu0vIakVj7gk9qwE.rbxm) (2.2 MB) — 30,064 Instances
-
-| | MInstance | RBLXSerialize | SerializationService |
-| :--- | :--- | :--- | :--- |
-| **Serialization Time** | `0.3673 seconds` | ERROR | `0.0671 seconds` 😨 |
-| **Compression Time** | `0.0305 seconds` | ERROR | |
-| **Serialized data character count** | `2,690,101` (uncompressed) | ERROR | `2,331,507` |
-| **Compressed data character count** | `628,698` | ERROR | |
-
-### Test \#3: `Instance.new("Part")`
-
-| | MInstance | RBLXSerialize | SerializationService |
-| :--- | :--- | :--- | :--- |
-| **Serialization Time** | `0.00002 seconds` | `0.0005 seconds` | `0.006 seconds` |
-| **Compression Time** | `0.000003 seconds` | | |
-| **Serialized data character count** | `43` (uncompressed) 🤮 | | `2,550` |
-| **Compressed data character count** | `39` 🤮 | `4` | |
-
------
-
-## Why use this module?
-
-Here are a few reasons:
-
-  - Supports majority of Roblox data types and can serialize most properties with no issues.
-  - Extremely fast performance!
-  - Supports properties with its value being set to reference to another Instance, achieving this without setting UUIDs. This allows properties such as `SelectionBox.Adornee` to perfectly work as long as it is referencing an Instance that is a descendant of the main Instance being deserialized.
-  - Supports MeshParts, which some other serializers fail to serialize properly. This is optional and you have to manually enable it in `DeserializationSettings`. (LOADS SLOW due to requiring to fetch the assets from Roblox's APIs)
-  - Serializes attributes.
-  - Instead of relying on an API dump to get properties like all other serializers do, the module will be updated to use `ReflectionService:GetPropertiesOfClass()` the moment that it is enabled, which is more futureproof than relying on the API dump.
-  - You have the option to encode serialized data into Base94, which allows you to store serialized data into `DataStore`.
-  - And many more\!
-
------
-
-## Usage
-
-  - `Minstance.SerializeInstance(TargetInstance: Instance, SerializationSettings: {})` - Serializes an Instance.
-
-  - `Minstance.DeserializeInstance(DeserializedData: string, DeserializationSettings: {})` - Decompresses or deserializes data passed into it. Please note that you have to explicitly specify if your data is compressed, if it is encoded in Base94, etc.
-
-Settings format:
-You can simply pass the Instance you want to serialize/deserialize without passing a dictionary containing the settings, and it will use the default settings. However, if you need a specific setting enabled, you will have to fill ALL of the setting inside the settings dictionary.
-
-### SerializationSettings Format:
-
-```lua
-{
-    --> Setting: ValueType = DefaultValue
-    IncludeDescendants: boolean = true
-    CompressSerializedData: boolean = true
-    CompressionLevel: number = 8
-    EncodeInBase94: boolean = false
-    AnnoyingConsolePrints: boolean = false
-    UseLegacySlowCompressor: boolean = false
-    IncludeAttributes: boolean = true
-    DisallowedProperties: {[string]: {[string]: any} } = nil
-}
+## Installation
+Add to your `wally.toml`:
+```toml
+minstance = "ophidiedev/MInstance@0.1.0"
 ```
 
-  * **IncludeDescendants:** Determines if the descendants of the Instance you are serializing will also be serialized.
-  * **CompressSerializedData:** Determines if the serialized data will be compressed with zstd.
-  * **CompressionLevel:** Determines the level of compression that will be used. The higher the level, the better the compression ratio is, but the slower it takes to compress. Lowest level is 1, while the highest is 22. Defaults to 8 if nothing is passed.
-  * **EncodeInBase94:** Determines if the serialized data will be encoded in Base94, which is useful when you want to save serialized data into `DataStore`.
-  * **AnnoyingConsolePrints:** If this is set to `true`, it will print in the console how long it took to serialize or deserialize data every single time you call `SerializeInstance` or `DeserializeInstance`.
-  * **UseLegacySlowCompressor:** Determines if the serialized data should be compressed with the old and slow compressor ([https://devforum.roblox.com/t/string-compression-zlibdeflate/755687](https://devforum.roblox.com/t/string-compression-zlibdeflate/755687)) or use Roblox's natively compiled zstd compressor. This is absolutely NOT recommended unless the zstd compression breaks.
-  * **IncludeAttributes:** Determines if attributes of the Instance(s) should also be serialized
-  * **DisallowedProperties:** A dictionary containing the properties that you do not want to include in serialization. If there isn't any property that you want to exclude, simply leave this `nil`. But for example, if you want to do something like exclude property "BrickColor" of class "Part" and "MeshPart", you can pass the table below:
-
-<!-- end list -->
-
-```lua
-{
-    ["Part"] = {
-        ["BrickColor"] = true
-    },
-    ["MeshPart"] = {
-        ["BrickColor"] = true
-    }
-}
+Add to your `pesde.toml`:
+```toml
+minstance = { name = "ophidiedev/minstance", version = "^0.1.0" }
 ```
 
------
-
-### DeserializationSettings Format:
-
-```lua
-{
-    --> Setting: ValueType = DefaultValue
-    IsDataCompressed: boolean = true
-    IsBase94Encoded: boolean = false
-    AnnoyingConsolePrints: boolean = false
-    IsCompressedWithLegacyCompressor: boolean = false
-    ProperlyDeserializeMeshParts: boolean = false
-    ParentInstanceWhileDeserializing: Instance? = nil
-}
+Add to your `package.json`:
+```json
+"@rbxts/MInstance": "^0.1.0"
 ```
 
-  * **IsDataCompressed:** Pass `true` if your serialized data is compressed, aka if `CompressSerializedData` was set to `true` when you serialized your Instance.
-  * **IsBase94Encoded:** Pass `true` if your serialized data is encoded in Base94, aka if `CompressSerializedData` was set to `true` when you serialized your Instance.
-  * **AnnoyingConsolePrints:** If this is set to `true`, it will print in the console how long it took to serialize or deserialize data every single time you call `SerializeInstance` or `DeserializeInstance`.
-  * **IsCompressedWithLegacyCompressor:** Pass `true` if your serialized data was compressed with the old and slow zlib compression algorithm, aka if `UseLegacySlowCompressor` was set to `true` when you serialized your Instance.
-  * **ProperlyDeserializeMeshParts:** If this is set to `true`, MeshParts will be properly deserialized and loaded. However, this takes VERY LONG, due to needing to fetch the mesh asset from Roblox's APIs. This is NOT recommended to be enabled unless you really want to properly deserialize MeshParts.
-  * **ParentInstanceWhileDeserializing:** If an Instance is passed to this, it will parent the main Instance you are deserializing to the Instance passed as `ParentInstanceWhileDeserializing` BEFORE it deserializes any of its children. Leave this `nil` if you do not need that.
-
------
-
-### Example code usage:
-
-```lua
-local MInstance = require(path.to.Minstance)
-local TargetInstanceToSerialize = workspace.Part
-
-local SerializationSettings = {
-    IncludeDescendants = true,
-    CompressSerializedData = true,
-    EncodeInBase94 = false,
-    AnnoyingConsolePrints = true,
-    UseLegacySlowCompressor = false,
-    IncludeAttributes = true,
-    DisallowedProperties = nil
-}
-
-local DeserializationSettings = {
-    IsDataCompressed = true,
-    IsBase94Encoded = false,
-    AnnoyingConsolePrints = false,
-    IsCompressedWithLegacyCompressor = false,
-    ProperlyDeserializeMeshParts = false,
-    ParentInstanceWhileDeserializing = nil
-}
-
-local Serialized = MInstance.SerializeInstance(TargetInstanceToSerialize, SerializationSettings)
-local Deserialized = MInstance.DeserializeInstance(Serialized, DeserializationSettings)
-
-print(Deserialized)
-```
+## Licenses
+- The original source code for MInstance is MIT Licensed the original source can be found [here](https://github.com/kieldbg/MInstance).
