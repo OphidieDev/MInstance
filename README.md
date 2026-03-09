@@ -38,7 +38,7 @@ minstance = { name = "ophidiedev/minstance", version = "^0.1.0" }
 
 Add to your `package.json`:
 ```json
-"@rbxts/MInstance": "^0.1.0"
+"@rbxts/minstance": "^0.1.0"
 ```
 
 ## Licenses

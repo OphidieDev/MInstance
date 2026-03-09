@@ -1,5 +1,5 @@
 {
-  "name": "@rbxts/MInstance",
+  "name": "@rbxts/minstance",
   "version": "0.1.0",
   "description": "A very fast Instance serializer for Roblox that can serialize 40,000 Instances and compress it into a 100K+ character string in only 0.4s",
   "main": "src/init.luau",
