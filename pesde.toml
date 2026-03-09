@@ -1,0 +1,30 @@
+name = "ophidiedev/minstance"
+version = "0.1.0"
+authors = ["Ophidie (https://github.com/OphidieDev)", "kieldbg (https://github.com/kieldbg)"]
+description = "A very fast Instance serializer for Roblox that can serialize 40,000 Instances and compress it into a 100K+ character string in only 0.4s"
+repository = "https://github.com/OphidieDev/MInstance"
+license = "MIT"
+includes = [
+  "pesde.toml",
+  "README.md",
+  "LICENSE",
+  "src/**/*.luau",
+  "src/LICENSE",
+  "src/README.md"
+]
+
+[target]
+environment = "roblox"
+lib = "src/init.luau"
+build_files = ["src"]
+
+[indices]
+default = "https://github.com/pesde-pkg/index"
+
+[scripts]
+roblox_sync_config_generator = ".pesde/scripts/roblox_sync_config_generator.luau"
+sourcemap_generator = ".pesde/scripts/sourcemap_generator.luau"
+
+[dev_dependencies]
+scripts = { name = "pesde/scripts_rojo", version = "^0.1.0", target = "lune" }
+rojo = { name = "pesde/rojo", version = "^7.4.4", target = "lune" }

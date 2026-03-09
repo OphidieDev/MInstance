@@ -1,0 +1,35 @@
+{
+  "name": "@rbxts/MInstance",
+  "version": "0.1.0",
+  "description": "A very fast Instance serializer for Roblox that can serialize 40,000 Instances and compress it into a 100K+ character string in only 0.4s",
+  "main": "src/init.luau",
+  "types": "src/index.d.ts",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OphidieDev/MInstance.git"
+  },
+  "author": "ophidie",
+  "license": "MIT",
+  "bugs": {
+	"url": "https://github.com/OphidieDev/MInstance/issues"
+  },
+  "homepage": "https://github.com/OphidieDev/MInstance#readme",
+  "files": [
+    "src/**/*",
+    "!src/**/*.spec.{luau,ts}",
+    "default.project.json",
+	"LICENSE"
+  ],
+  "publishConfig": {
+	"access": "public"
+  },
+   "devDependencies": {
+    "@rbxts/compiler-types": "^3.0.0-types.0",
+    "@rbxts/types": "^1.0.813",
+    "roblox-ts": "^3.0.0",
+    "typescript": "^5.6.3"
+  }
+}
