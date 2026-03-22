@@ -20,6 +20,7 @@
   "files": [
     "src/**/*",
     "!src/**/*.spec.{luau,ts}",
+	"PropertiesDump/**/*",
     "default.project.json",
 	"LICENSE"
   ],

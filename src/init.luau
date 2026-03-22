@@ -5,6 +5,7 @@ local EMPTY_TABLE = {}
 
 local AssetService = game:GetService("AssetService")
 local ReflectionServiceWrapper = require(script.PropertiesDump.DefaultProperties)
+local ReflectionServiceWrapper = require(script.Parent.PropertiesDump.DefaultProperties)
 local BufferEncoder = require(script.Modules.BufferEncoder)
 local OldCompress = require(script.Modules.OldCompress)
 local NewCompress = require(script.Modules.NewCompress)
