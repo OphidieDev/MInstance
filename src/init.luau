@@ -4,7 +4,12 @@ local NULL = nil
 local EMPTY_TABLE = {}
 
 local AssetService = game:GetService("AssetService")
-local ReflectionServiceWrapper = require(script.Parent.PropertiesDump.DefaultProperties)
+local ReflectionServiceWrapper = nil
+if script.Parent:FindFirstChild("PropertiesDump") then
+	ReflectionServiceWrapper = require(script.Parent.PropertiesDump.DefaultProperties)
+else 
+	ReflectionServiceWrapper = require(script.PropertiesDump.DefaultProperties)
+end
 local BufferEncoder = require(script.Modules.BufferEncoder)
 local OldCompress = require(script.Modules.OldCompress)
 local NewCompress = require(script.Modules.NewCompress)
