@@ -28,17 +28,17 @@
 ## Installation
 Add to your `wally.toml`:
 ```toml
-minstance = "ophidiedev/minstance@0.6.0"
+minstance = "ophidiedev/minstance@0.8.0"
 ```
 
 Add to your `pesde.toml`:
 ```toml
-minstance = { name = "ophidiedev/minstance", version = "^0.6.0" }
+minstance = { name = "ophidiedev/minstance", version = "^0.8.0" }
 ```
 
 Add to your `package.json`:
 ```json
-"@rbxts/minstance": "^0.6.0"
+"@rbxts/minstance": "^0.8.0"
 ```
 
 ## Licenses

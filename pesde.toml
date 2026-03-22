@@ -1,5 +1,5 @@
 name = "ophidiedev/minstance"
-version = "0.6.0"
+version = "0.8.0"
 authors = ["Ophidie (https://github.com/OphidieDev)", "kieldbg (https://github.com/kieldbg)"]
 description = "A very fast Instance serializer for Roblox that can serialize 40,000 Instances and compress it into a 100K+ character string in only 0.4s"
 repository = "https://github.com/OphidieDev/MInstance"
