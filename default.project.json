@@ -3,6 +3,7 @@
   "tree": {
     "$path": "src",
 	"PropertiesDump": {
+		"$className": "Folder",
 		"DefaultProperties": {
 			"$path": "PropertiesDump/DefaultProperties.rbxm"
 		}
