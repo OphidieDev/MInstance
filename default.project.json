@@ -1,6 +1,9 @@
 {
   "name": "MInstance",
   "tree": {
-    "$path": "src"
+    "$path": "src",
+	"PropertiesDump": {
+		"$path": "PropertiesDump"
+	}
   }
 }
